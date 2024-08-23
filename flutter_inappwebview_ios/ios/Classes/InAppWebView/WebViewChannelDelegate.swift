@@ -908,6 +908,14 @@ public class WebViewChannelDelegate: ChannelDelegate {
             callback.defaultBehaviour(nil)
             return
         }
+
+        // Check if the request is for an iFrame and if iFrame requests are allowed
+        // if navigationAction.targetFrame?.isMainFrame == false && webView?.settings?.allowIFrameRequests == true {
+        if navigationAction.targetFrame?.isMainFrame == false {
+            callback.defaultBehaviour(.allow)
+            return
+      }
+
         channel?.invokeMethod("shouldOverrideUrlLoading", arguments: navigationAction.toMap(), callback: callback)
     }
     

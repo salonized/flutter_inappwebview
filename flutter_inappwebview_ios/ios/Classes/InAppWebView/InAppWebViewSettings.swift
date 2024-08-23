@@ -82,6 +82,7 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
     var maximumViewportInset: UIEdgeInsets? = nil
     var isInspectable = false
     var shouldPrintBackgrounds = false
+    var allowIFrameRequests = true
     
     override init(){
         super.init()
